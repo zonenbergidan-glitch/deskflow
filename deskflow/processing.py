@@ -139,3 +139,11 @@ def sort_by_deadline(tickets: Iterable[Ticket]) -> list[Ticket]:
 def sort_for_report(tickets: Iterable[Ticket]) -> list[Ticket]:
     """Two fields: by category name, then the most urgent first inside it."""
     return sorted(tickets, key=lambda t: (t.category, t.priority))
+
+
+def average_hours_open(tickets: Iterable[Ticket], now) -> float:
+    """Average time (hours) that tickets which are not closed have been waiting."""
+    hours = [t.hours_open(now) for t in tickets if t.status != "closed"]
+    if not hours:
+        return 0.0
+    return round(sum(hours) / len(hours), 1)
