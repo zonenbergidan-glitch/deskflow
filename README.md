@@ -146,8 +146,8 @@
 **גרסת Python:** 3.10 ומעלה (הפרויקט נבדק על 3.13). אין תלויות חיצוניות – רק הספרייה הסטנדרטית.
 
 ```bash
-git clone <repository-url>
-cd deskflow-project
+git clone https://github.com/zonenbergidan-glitch/deskflow.git
+cd deskflow
 python main.py        # או python3 main.py
 ```
 
