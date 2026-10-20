@@ -15,6 +15,7 @@ from deskflow.models import Helpdesk, NetworkTicket, Technician, Ticket
 from deskflow.processing import (
     DispatchQueues,
     active_buildings,
+    average_hours_open,
     count_by_category,
     departments,
     group_by_technician,
@@ -254,6 +255,7 @@ def demo_summary(desk: Helpdesk) -> None:
         print(f"  {status:<12} {count}")
     wide = [t for t in desk.tickets if isinstance(t, NetworkTicket) and t.affected_users >= 20]
     print(f"  wide network outages: {[t.ticket_id for t in wide]}")
+    print(f"  average open time: {average_hours_open(desk.tickets, NOW)} hours")
 
 
 def main() -> None:
